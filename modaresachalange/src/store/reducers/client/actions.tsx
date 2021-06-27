@@ -8,7 +8,7 @@ const getAllClientsRequest = () => {
       type: actionTypes.GET_ALL_CLIENTS,
     })
 
-    axios.get('http://localhost:8000/clients/', {})
+    axios.get('http://localhost:8000/api/clients/', {})
       .then((res: any) => {
         if (res) {
           dispatch({

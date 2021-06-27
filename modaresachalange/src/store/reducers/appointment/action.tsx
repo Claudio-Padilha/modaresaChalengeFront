@@ -1,14 +1,14 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
 
-const getAllAppointments = () => {
+const getAllAppointmentsRequest = () => {
 
   return (dispatch: any) => {
     dispatch({
       type: actionTypes.GET_ALL_APPOINTMENTS,
     })
 
-    axios.get('http://localhost:8000/appointments/', {})
+    axios.get('http://localhost:8000/api/appointments/', {})
       .then((res: any) => {
         if (res) {
           dispatch({
@@ -28,4 +28,4 @@ const getAllAppointments = () => {
   }
 }
 
-export { getAllAppointments }
+export { getAllAppointmentsRequest }

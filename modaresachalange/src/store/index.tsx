@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import thunk from 'redux-thunk'
 
-// import getAllStaffMembersReducer from './reducers/staff/staffReducers/getAll'
-// import getAllAppointmentsReducer from './reducers/appointment/appointmentReducers/getAll'
+import getAllStaffMembersReducer from './reducers/staff_member/reducer'
+import getAllAppointmentsReducer from './reducers/appointment/reducer'
 import getAllClientsReducer from './reducers/client/reducer'
 
 declare global {
@@ -13,6 +13,8 @@ declare global {
 
 export const configureStore = () => {
     const reducers = combineReducers({
+      getAllStaffMembersService: getAllStaffMembersReducer,
+      getAllAppointmentsService: getAllAppointmentsReducer,
       getAllClientsService: getAllClientsReducer
     })
   

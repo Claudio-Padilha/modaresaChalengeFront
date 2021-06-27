@@ -1,7 +1,16 @@
-import React, { useMemo } from 'react'
+import React, { useState } from 'react'
 import { Inject, ScheduleComponent, Week, Month, ViewsDirective, ViewDirective, EventSettingsModel } from '@syncfusion/ej2-react-schedule'
 
-const Home: any = () => {
+import { useClientActions, useClient } from '../../hooks/client'
+
+require("./home.css")
+
+const Home: any = (props: any) => {
+
+    const { state } = useClient()
+    
+
+    console.log(state, "STATEEEEEEEEEEEEEE")
 
     const appointments: EventSettingsModel = {
         dataSource: [
@@ -9,14 +18,34 @@ const Home: any = () => {
         ]
     }
 
+    const [showModal, setShowModal] = useState(false)
+
+    const handleClick = () => (setShowModal(!showModal))
+
+
     return (
-        <ScheduleComponent eventSettings={appointments}>
+        
+        <>
+
+        {
+            showModal && 
+            
+            <div id="modal">
+                <p>I am a modal!</p>
+            </div>
+        }
+
+        <ScheduleComponent height={'90vh'} width={'80vw'} eventSettings={appointments}>
             <ViewsDirective>
-                <ViewDirective option='Week'/>
                 <ViewDirective option='Month'/>
             </ViewsDirective>
-            <Inject services={[Week, Month]} />
+            <Inject services={[Month]} />
         </ScheduleComponent>
+
+        <div id="buttonDiv">
+            <button id="appointmentButton" onClick={handleClick} type="button" >New Appointment</button>
+        </div>
+        </>
       )
 }
 

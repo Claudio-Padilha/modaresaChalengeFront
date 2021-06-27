@@ -1,0 +1,14 @@
+#buttonDiv{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
+#appointmentButton{
+    width: 15vw;    
+    margin-top: 3vh;
+    font-size: large;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color:rgb(109, 44, 240);
+}

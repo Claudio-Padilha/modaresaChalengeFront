@@ -29,11 +29,13 @@ export const useClient = () => {
     const allClientsLoaded = useSelector((state: any) => clientSelectors.getAllClientsLoaded(state))
     const allClientsError = useSelector((state: any) => clientSelectors.getAllClientsError(state))
     const allClients = useSelector((state: any) => clientSelectors.getAllClients(state))
-  
+    const state = useSelector((state: any) => state)
+
     return {
       allClientsLoading,
       allClientsLoaded,
       allClientsError,
-      allClients
+      allClients,
+      state
     }
 }  

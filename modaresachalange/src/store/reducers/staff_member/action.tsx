@@ -1,14 +1,14 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
 
-const getAllStaffMemberssRequest = () => {
+const getAllStaffMembersRequest = () => {
 
   return (dispatch: any) => {
     dispatch({
       type: actionTypes.GET_ALL_STAFFMEMBERS,
     })
 
-    axios.get('http://localhost:8000/satffMembers/', {})
+    axios.get('http://localhost:8000/api/staffMembers/', {})
       .then((res: any) => {
         if (res) {
           dispatch({
@@ -28,4 +28,4 @@ const getAllStaffMemberssRequest = () => {
   }
 }
 
-export { getAllStaffMemberssRequest }
+export { getAllStaffMembersRequest }

@@ -25,7 +25,8 @@ const getAllAppointmentsReducer = createReducer(initialState, {
     [actionTypes.GET_ALL_APPOINTMENTS_FAIL]: requestGetAllAppointmentsError,
     [actionTypes.GET_ALL_APPOINTMENTS_SUCCESS]: (state: any, action: any) => {
 
-        state.appointments = action?.res?.data?.data
+        console.log(action?.res?.data, "DATAAAAAAAAAA")
+        state.appointments = action?.res?.data
         state.loadedAppointments= true
         state.loadingAppointments = false
         state.errorAppointments = false

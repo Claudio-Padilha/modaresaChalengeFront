@@ -25,7 +25,8 @@ const getAllClientsReducer = createReducer(initialState, {
     [actionTypes.GET_ALL_CLIENTS_FAIL]: requestGetAllClientsError,
     [actionTypes.GET_ALL_CLIENTS_SUCCESS]: (state: any, action: any) => {
 
-        state.clients = action?.res?.data?.data
+      console.log(action?.res?.data, "DATAAAAAAAAAA")
+        state.clients = action?.res?.data
         state.loadedClients= true
         state.loadingClients = false
         state.errorClients = false

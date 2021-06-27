@@ -25,7 +25,8 @@ const getAllStaffMembersReducer = createReducer(initialState, {
     [actionTypes.GET_ALL_STAFFMEMBERS_FAIL]: requestGetAllStaffMembersError,
     [actionTypes.GET_ALL_STAFFMEMBERS_SUCCESS]: (state: any, action: any) => {
 
-        state.staff_members = action?.res?.data?.data
+      console.log(action?.res?.data, "DATAAAAAAAAAA")
+        state.staff_members = action?.res?.data
         state.loadedStaffMembers= true
         state.loadingStaffMembers = false
         state.errorStaffMembers = false
