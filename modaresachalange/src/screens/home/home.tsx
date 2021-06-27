@@ -9,8 +9,6 @@ const Home: any = () => {
         ]
     }
 
-    console.log(appointments)
-
     return (
         <ScheduleComponent eventSettings={appointments}>
             <ViewsDirective>

@@ -1,18 +1,18 @@
 import axios from 'axios'
 import * as actionTypes from './actionTypes'
 
-const getAllClientsRequest = () => {
+const getAllAppointments = () => {
 
   return (dispatch: any) => {
     dispatch({
-      type: actionTypes.GET_ALL_CLIENTS,
+      type: actionTypes.GET_ALL_APPOINTMENTS,
     })
 
-    axios.get('http://localhost:8000/clients/', {})
+    axios.get('http://localhost:8000/appointments/', {})
       .then((res: any) => {
         if (res) {
           dispatch({
-            type: actionTypes.GET_ALL_CLIENTS_SUCCESS,
+            type: actionTypes.GET_ALL_APPOINTMENTS_SUCCESS,
             res
           })
         }
@@ -20,7 +20,7 @@ const getAllClientsRequest = () => {
       .catch((error: any) => {
         if (error) {
           dispatch({
-            type: actionTypes.GET_ALL_CLIENTS_FAIL,
+            type: actionTypes.GET_ALL_APPOINTMENTS_FAIL,
             error
           })
         }
@@ -28,4 +28,4 @@ const getAllClientsRequest = () => {
   }
 }
 
-export { getAllClientsRequest }
+export { getAllAppointments }
