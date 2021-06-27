@@ -15,7 +15,7 @@ function App() {
   getAllClients()
 
   return (
-    <Home />
+    <Home shouldFetch={true}/>
   );
 }
 

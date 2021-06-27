@@ -1,9 +1,18 @@
-import React from 'react'
-import { Inject, ScheduleComponent, Day, Week, Month, ViewsDirective, ViewDirective } from '@syncfusion/ej2-react-schedule'
+import React, { useMemo } from 'react'
+import { Inject, ScheduleComponent, Week, Month, ViewsDirective, ViewDirective, EventSettingsModel } from '@syncfusion/ej2-react-schedule'
 
-const Home = () => {
+const Home: any = () => {
+
+    const appointments: EventSettingsModel = {
+        dataSource: [
+            {Subject: 'client A and staff member B', EndTime: new Date(2021, 5, 27, 12, 0), StartTime: new Date(2021, 5, 27, 11, 0)}
+        ]
+    }
+
+    console.log(appointments)
+
     return (
-        <ScheduleComponent>
+        <ScheduleComponent eventSettings={appointments}>
             <ViewsDirective>
                 <ViewDirective option='Week'/>
                 <ViewDirective option='Month'/>
