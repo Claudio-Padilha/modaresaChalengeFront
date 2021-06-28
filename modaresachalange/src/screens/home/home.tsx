@@ -8,14 +8,20 @@ require("./home.css")
 const Home: any = (props: any) => {
 
     const { state } = useClient()
-    
-
-    console.log(state, "STATEEEEEEEEEEEEEE")
+    const appointments_aux = state.getAllAppointmentsService.appointments
+    const data:any = []
+    for (let i=0; i<appointments_aux.length; i++) {
+        data.push(
+            {
+                Subject: appointments_aux[i].client.name + " and " + appointments_aux[i].staff_member.first_name + " " + appointments_aux[i].staff_member.last_name,
+                EndTime: new Date(appointments_aux[i].end),
+                StartTime: new Date(appointments_aux[i].start)
+            }
+        )
+    }
 
     const appointments: EventSettingsModel = {
-        dataSource: [
-            {Subject: 'client A and staff member B', EndTime: new Date(2021, 5, 27, 12, 0), StartTime: new Date(2021, 5, 27, 11, 0)}
-        ]
+        dataSource: data
     }
 
     const [showModal, setShowModal] = useState(false)
