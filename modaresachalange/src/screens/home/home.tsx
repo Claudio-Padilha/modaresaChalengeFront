@@ -3,9 +3,24 @@ import { Inject, ScheduleComponent, Week, Month, ViewsDirective, ViewDirective, 
 
 import { useClientActions, useClient } from '../../hooks/client'
 
+import DateFnsUtils from '@date-io/date-fns';
+import Grid from '@material-ui/core/Grid';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+  } from '@material-ui/pickers';
+
 require("./home.css")
 
 const Home: any = (props: any) => {
+    
+
+    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+    const handleDateChange = (date: any) => {
+        setSelectedDate(date);
+    };
 
     const { state } = useClient()
     const appointments_aux = state.getAllAppointmentsService.appointments
@@ -24,6 +39,11 @@ const Home: any = (props: any) => {
         dataSource: data
     }
 
+    const clients: any = state.getAllClientsService.clients
+    const staffMembers = state.getAllStaffMembersService.staff_members
+
+    console.log(staffMembers, "STAFF")
+
     const [showModal, setShowModal] = useState(false)
 
     const handleClick = () => (setShowModal(!showModal))
@@ -37,7 +57,47 @@ const Home: any = (props: any) => {
             showModal && 
             
             <div id="modal">
-                <p>I am a modal!</p>
+                <p>Clients</p>
+                <select >
+                    <option disabled>Selecionar</option>
+                    {clients?.map((client: any) => {
+                        return <option value={client?.id}>{client.name}</option>
+                    })}
+                </select>
+
+                <p>Staff Members</p>
+                <select >
+                    <option disabled>Selecionar</option>
+                    {staffMembers?.map((staff_member: any) => {
+                        return <option value={staff_member?.id}>{staff_member.first_name + " " + staff_member.last_name}</option>
+                    })}
+                </select>
+
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid container justify="space-around">
+                    <KeyboardDatePicker
+                    margin="normal"
+                    id="date-picker-dialog"
+                    label="Date picker dialog"
+                    format="MM/dd/yyyy"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change date',
+                    }}
+                    />
+                    <KeyboardTimePicker
+                    margin="normal"
+                    id="time-picker"
+                    label="Time picker"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                    KeyboardButtonProps={{
+                        'aria-label': 'change time',
+                    }}
+                    />
+                </Grid>
+                </MuiPickersUtilsProvider>
             </div>
         }
 
