@@ -9,7 +9,8 @@ export const useAppointmentActions = () => {
 
     const actions = useMemo(
     () => bindActionCreators({
-        getAll: appointmentActions.getAllAppointmentsRequest
+        getAll: appointmentActions.getAllAppointmentsRequest,
+        postStuff: appointmentActions.postAppointmentRequest
     }, dispatch)
     , [dispatch])
 
@@ -20,7 +21,14 @@ export const useAppointmentActions = () => {
         []
     )
 
-    return { getAllAppointments }
+    const postAppointment = useCallback(
+        (data) => {
+            actions.postStuff(data)
+        },
+        [actions]
+    )
+
+    return { getAllAppointments, postAppointment }
 }
 
 export const useAppointment = () => {

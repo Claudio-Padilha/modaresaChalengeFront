@@ -28,4 +28,34 @@ const getAllAppointmentsRequest = () => {
   }
 }
 
-export { getAllAppointmentsRequest }
+const postAppointmentRequest = (data: any) => {
+
+  console.log(data)
+
+  return (dispatch: any) => {
+    dispatch({
+      type: actionTypes.POST_APPOINTMENT,
+      payload: data
+    })
+
+    axios.post('http://localhost:8000/api/appointments/',data, {} )
+      .then((res: any) => {
+        if (res) {
+          dispatch({
+            type: actionTypes.POST_APPOINTMENT_SUCCESS,
+            res
+          })
+        }
+      })
+      .catch((error: any) => {
+        if (error) {
+          dispatch({
+            type: actionTypes.POST_APPOINTMENT_FAIL,
+            error
+          })
+        }
+      })
+  }
+}
+
+export { getAllAppointmentsRequest, postAppointmentRequest }

@@ -1,14 +1,63 @@
 #buttonDiv{
     width: 100vw;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+}
+
+#createButtonDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12vw;
+}
+
+#createAppointmentButton{
+    width: 20vw;    
+    margin-top: 10vh;
+    margin-bottom: 3vh;
+    font-size: large;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color:rgb(10, 160, 18);
+}
+
+#cancelAppointmentButton{
+    width: 15vw;    
+    margin-top: 1vh;
+    margin-left: 2vw;
+    margin-bottom: 3vh;
+    font-size: large;
+    font-weight: 600;
+    border-radius: 20px;
+    background-color:rgb(10, 160, 18);
 }
 
 #appointmentButton{
     width: 15vw;    
     margin-top: 3vh;
+    margin-bottom: 3vh;
     font-size: large;
     font-weight: 600;
     border-radius: 20px;
-    background-color:rgb(109, 44, 240);
+    background-color:rgb(10, 160, 18);
+}
+
+#selects{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3vh;
+    margin-bottom: 6vh;
+}
+
+#modal{
+    width: 45vw;
+    height: 60vh;
+    margin-top: 15vh;
+    margin-left: 28vw;
+    z-index: 20;
+    background-color: rgb(109, 44, 240);
+    position: fixed;
+    border-radius: 20px;
 }
